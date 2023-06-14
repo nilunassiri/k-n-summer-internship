@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const OrderPage = ({ orders, handleDelete }) => {
   const { id } = useParams();
   const order = orders.find((item) => item.orderNo === id);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <main className="OrderPage">
       <div className="card">
@@ -29,7 +29,7 @@ const OrderPage = ({ orders, handleDelete }) => {
               </div>
             </>
           )}
-          {!order && <>{navigate("/missing")}</>}
+          {/* {!order && <>{navigate("/missing")}</>} */}
         </div>
       </div>
     </main>

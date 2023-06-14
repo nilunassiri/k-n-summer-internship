@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 
-const OrderItem = ({ item, handleDelete }) => {
+const OrderItem = ({ item, handleDelete, handleEdit }) => {
   return (
     <tr key={item.orderNo}>
       <td>{item.orderNo}</td>
@@ -16,8 +16,12 @@ const OrderItem = ({ item, handleDelete }) => {
           <Link className="btn btnPrimary" to={`/order/${item.orderNo}`}>
             <FaEye />
           </Link>
-          <Link className="btn btnWarning">
-            <FaEdit />
+          <Link to={`/edit/${item.orderNo}`}>
+            <button
+              className="btn btnWarning"
+            >
+              <FaEdit />
+            </button>
           </Link>
           <button
             className="btn btnDanger"

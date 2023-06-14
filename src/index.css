@@ -129,6 +129,7 @@ body {
 
 .Home,
 .NewOrder,
+.EditOrder,
 .OrderPage,
 .About,
 .Missing {
@@ -142,7 +143,8 @@ body {
   background-color: #e1e1e1;
 }
 
-.OrderPage .card {
+.OrderPage .card,
+.EditOrder .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,7 +156,14 @@ body {
   content: 'Shipment Details';
 }
 
-.OrderPage button{
+
+.EditOrder .card::after{
+    position: absolute;
+    content: 'Edit Details';
+  }
+
+.OrderPage button,
+.EditOrder button{
 margin: 1rem;
   width: 70%;
   height: 48px;
@@ -164,7 +173,8 @@ margin: 1rem;
   cursor: pointer;
 }
 
-.NewOrderForm .card {
+.NewOrderForm .card,
+.EditOrderForm .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,13 +186,15 @@ margin: 1rem;
     content: 'New Shipment';
 }
 
-.NewOrderForm label {
+.NewOrderForm label,
+.EditOrderForm label {
   margin-top: 0.75rem;
   font-size: medium;
 }
 
 .NewOrderForm input[type='text'],
-.NewOrderForm input[type='date'] {
+.EditOrderForm input[type='text']
+ {
   font-family: 'Open Sans', sans-serif;
   width: 70%;
   min-height: 30px;

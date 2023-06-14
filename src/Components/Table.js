@@ -1,7 +1,7 @@
 import React from "react";
 import OrderItem from "./OrderItem";
 
-const Table = ({ orders, handleDelete }) => {
+const Table = ({ orders, handleDelete, handleEdit }) => {
   return (
     <table className="Table">
       <thead>
@@ -17,7 +17,12 @@ const Table = ({ orders, handleDelete }) => {
       </thead>
       <tbody>
         {orders.map((item) => (
-          <OrderItem key={item.orderNo} item={item} handleDelete={handleDelete} />
+          <OrderItem
+            key={item.orderNo}
+            item={item}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
         ))}
       </tbody>
     </table>

@@ -30,7 +30,7 @@ const NewOrder = ({
           <label htmlFor="orderDate">Date:</label>
           <input
             id="orderDate"
-            type="date"
+            type="text"
             required
             value={orderDate}
             onChange={(e) => setOrderDate(e.target.value)}
