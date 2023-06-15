@@ -1,12 +1,13 @@
 import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import DataContext from "../context/DataContext";
+import { useSelector } from "react-redux";
+
 
 import React from "react";
 
 const EditOrder = () => {
   const {
-    orders,
     handleEdit,
     editOrderNo,
     setEditOrderNo,
@@ -21,11 +22,9 @@ const EditOrder = () => {
     editConsignee,
     setEditConsignee,
   } = useContext(DataContext);
+  const orderSlicer = useSelector((state) => state.order);
   const { id } = useParams();
-  // console.log(orders);
-  const order = orders.find((item) => item.orderNo === id);
-  // const navigate = useNavigate();
-  // console.log(id);
+  const order = orderSlicer.value.find((item) => item.orderNo === id);
   useEffect(() => {
     if (order) {
       setEditOrderNo(order.orderNo);
@@ -110,7 +109,6 @@ const EditOrder = () => {
           </form>
         </>
       )}
-      {/* {!editOrderNo && <>{navigate("/missing")}</>} */}
     </main>
   );
 };

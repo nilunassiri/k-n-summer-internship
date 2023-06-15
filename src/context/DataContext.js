@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosFetch from "../hooks/useAxiosFetch";
+import { useSelector, useDispatch } from "react-redux";
+import { updateOrder, deleteOrder } from "../redux/orderSlice";
 
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
-  const [orders, setOrders] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -17,19 +18,17 @@ export const DataProvider = ({ children }) => {
   const [editTrackingNo, setEditTrackingNo] = useState("");
   const [editStatus, setEditStatus] = useState("");
   const [editConsignee, setEditConsignee] = useState("");
-
+  const orderSlicer = useSelector((state) => state.order);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { data, fetchError, isLoading } = useAxiosFetch(
+  const { fetchError, isLoading } = useAxiosFetch(
     "http://localhost:3500/orders/"
   );
 
-  useEffect(() => {
-    setOrders(data);
-  }, [data]);
 
   useEffect(() => {
-    const filteredResults = orders.filter(
+    const filteredResults = orderSlicer.value.filter(
       (item) =>
         item.orderNo.includes(search) ||
         item.date.includes(search) ||
@@ -39,24 +38,18 @@ export const DataProvider = ({ children }) => {
         item.consignee.toLowerCase().includes(search.toLowerCase())
     );
     setSearchResults(filteredResults.reverse());
-  }, [orders, search]);
+  }, [orderSlicer.value, search]);
 
   const handleEdit = (id) => {
-    // const newDate = new Date(editDate);
-    // const correctDate = `${newDate.getDate()}/${newDate.getMonth()}/${newDate.getFullYear()}`;
     const updatedOrder = {
       orderNo: editOrderNo,
-      // date: correctDate,
       date: editDate,
       customer: editCustomer,
       trackingNo: editTrackingNo,
       status: editStatus,
       consignee: editConsignee,
     };
-    const allOrders = orders.map((item) =>
-      item.orderNo === id ? updatedOrder : item
-    );
-    setOrders(allOrders);
+    dispatch(updateOrder([updatedOrder, id]));
     setEditOrderNo("");
     setEditDate("");
     setEditCustomer("");
@@ -67,8 +60,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const handleDelete = (id) => {
-    const orderList = orders.filter((item) => item.orderNo !== id);
-    setOrders(orderList);
+    dispatch(deleteOrder(id));
     navigate("/");
   };
   return (
@@ -83,8 +75,6 @@ export const DataProvider = ({ children }) => {
         handleEdit,
         orderNo,
         setOrderNo,
-        orders,
-        setOrders,
         editOrderNo,
         setEditOrderNo,
         editDate,

@@ -1,6 +1,7 @@
-import { useState, useContext } from "react";
-import DataContext from "../context/DataContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createOrder } from "../redux/orderSlice";
 
 const NewOrder = () => {
   const [orderNo, setOrderNo] = useState("");
@@ -9,24 +10,20 @@ const NewOrder = () => {
   const [trackingNo, setTrackingNo] = useState("");
   const [orderStatus, setOrderStatus] = useState("");
   const [orderConsignee, setOrderConsignee] = useState("");
-  const { orders, setOrders } = useContext(DataContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const newDate = new Date(orderDate);
-    // const correctDate = `${newDate.getDate()}/${newDate.getMonth()}/${newDate.getFullYear()}`;
     const newOrder = {
       orderNo: orderNo,
-      // date: correctDate,
       date: orderDate,
       customer: orderCustomer,
       trackingNo: trackingNo,
       status: orderStatus,
       consignee: orderConsignee,
     };
-    const allOrders = [...orders, newOrder];
-    setOrders(allOrders);
+    dispatch(createOrder(newOrder));
     setOrderNo("");
     setOrderDate("");
     setOrderCustomer("");

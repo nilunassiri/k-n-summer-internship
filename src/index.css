@@ -162,17 +162,6 @@ body {
     content: 'Edit Details';
   }
 
-.OrderPage button,
-.EditOrder button{
-margin: 1rem;
-  width: 70%;
-  height: 48px;
-  border-radius: 5px;
-  padding: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
 .NewOrderForm .card,
 .EditOrderForm .card {
   display: flex;
@@ -205,7 +194,8 @@ margin: 1rem;
   outline: none;
 }
 
-.NewOrderForm button {
+.NewOrderForm button,
+.EditOrder button {
   margin: 1rem;
   width: 70%;
   height: 48px;
@@ -390,4 +380,22 @@ margin: 1rem;
 .About .card::after {
   position: absolute;
   content: 'About';
+}
+
+.About .myProfile{
+  padding: 2rem;
+
+}
+
+.About .myProfile .icon{
+  font-size: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.About .myProfile a{
+ font-weight: bold;
+  color: #0e2a55;
+  font-size: medium;
+
 }

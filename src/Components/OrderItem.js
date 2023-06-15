@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaTrashAlt, FaEdit, FaEye } from "react-icons/fa";
 
-const OrderItem = ({ item, handleDelete, handleEdit }) => {
+const OrderItem = ({ item, handleDelete }) => {
   return (
     <tr key={item.orderNo}>
       <td>{item.orderNo}</td>

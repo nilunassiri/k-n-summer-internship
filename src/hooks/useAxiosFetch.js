@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { save } from "../redux/orderSlice";
 
 const useAxiosFetch = (dataUrl) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +19,7 @@ const useAxiosFetch = (dataUrl) => {
         const response = await axios.get(url, { cancelToken: source.token });
         if (isMounted) {
           setData(response.data);
+          dispatch(save(response.data));
           setFetchError(null);
         }
       } catch (err) {
@@ -28,7 +32,6 @@ const useAxiosFetch = (dataUrl) => {
     fetchData(dataUrl);
 
     const cleanUp = () => {
-    //   console.log("clean up function");
       isMounted = false;
       source.cancel();
     };

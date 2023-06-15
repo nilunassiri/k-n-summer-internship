@@ -4,67 +4,51 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
+In the project directory, you can run: `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Used Packages and Libraries:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In this project I used react redux to read and fetch data from the api in store.js and import the Provider on index.js file . \
 
-### `npm run build`
+I used reducer to read data and edit and delete data in related pages. \
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I used axios to fetch data from the api and make custom hooks using usestate and useEffect to use for fetch errors. \
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+to create the nav bar, I used Routes and Route from the react-router-dom.\
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+there is a dataContext in the app to make the app more clean and tidy using createContext from react. \
 
-### `npm run eject`
+for the icons, I used react-icons library and used the Font Awsome package.\
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Api:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+the api that is used is "[https://my.api.mockaroo.com/shipments.json?key=5e0b62d0]" from the task file. \
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+but I also made a json file as db.json. if the current api reached the limits and doesn't work, you can run a REST api using this command on terminal:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`npm json-server -p 3500 -w data/db.json`
 
-## Learn More
+then you can replace the current api with this url :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+"[http://localhost:3500/orders]"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Features:
 
-### Code Splitting
+IN this app, you can see a list of shipment details on Home page, using a table.\
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In each row there are 3 options, you can choose view button to view the details in seprate page, edit button to edit data of a single item, and delete button to delete an item.\
 
-### Analyzing the Bundle Size
+On About page, there are some info about the Author, also you can find some contacts info.\
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Using the "Add Order +" button, you can add new orders to the list.\
 
-### Making a Progressive Web App
+There are also 2 buttons on seprate item details page, where you can delete or update the item.\
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+You can also search items on the Homepage and find the one you are looking for.\
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+In footer you can see how many items are left in the list.\
