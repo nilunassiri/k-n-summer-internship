@@ -1,7 +1,9 @@
-import React from "react";
+import { useContext } from "react";
+import DataContext from "../context/DataContext";
 import { useParams } from "react-router-dom";
 
-const OrderPage = ({ orders, handleDelete }) => {
+const OrderPage = () => {
+  const { orders, handleDelete } = useContext(DataContext);
   const { id } = useParams();
   const order = orders.find((item) => item.orderNo === id);
   // const navigate = useNavigate();

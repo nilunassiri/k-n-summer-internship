@@ -1,20 +1,40 @@
-import React from "react";
+import { useState, useContext } from "react";
+import DataContext from "../context/DataContext";
+import { useNavigate } from "react-router-dom";
 
-const NewOrder = ({
-  handleSubmit,
-  orderNo,
-  setOrderNo,
-  orderDate,
-  setOrderDate,
-  orderCustomer,
-  setOrderCustomer,
-  trackingNo,
-  setTrackingNo,
-  orderStatus,
-  setOrderStatus,
-  orderConsignee,
-  setOrderConsignee,
-}) => {
+const NewOrder = () => {
+  const [orderNo, setOrderNo] = useState("");
+  const [orderDate, setOrderDate] = useState("");
+  const [orderCustomer, setOrderCustomer] = useState("");
+  const [trackingNo, setTrackingNo] = useState("");
+  const [orderStatus, setOrderStatus] = useState("");
+  const [orderConsignee, setOrderConsignee] = useState("");
+  const { orders, setOrders } = useContext(DataContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // const newDate = new Date(orderDate);
+    // const correctDate = `${newDate.getDate()}/${newDate.getMonth()}/${newDate.getFullYear()}`;
+    const newOrder = {
+      orderNo: orderNo,
+      // date: correctDate,
+      date: orderDate,
+      customer: orderCustomer,
+      trackingNo: trackingNo,
+      status: orderStatus,
+      consignee: orderConsignee,
+    };
+    const allOrders = [...orders, newOrder];
+    setOrders(allOrders);
+    setOrderNo("");
+    setOrderDate("");
+    setOrderCustomer("");
+    setTrackingNo("");
+    setOrderStatus("");
+    setOrderConsignee("");
+    navigate("/");
+  };
   return (
     <main className="NewOrder">
       <form className="NewOrderForm" onSubmit={handleSubmit}>
@@ -32,6 +52,7 @@ const NewOrder = ({
             id="orderDate"
             type="text"
             required
+            placeholder="mm/dd/yyyy"
             value={orderDate}
             onChange={(e) => setOrderDate(e.target.value)}
           />

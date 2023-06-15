@@ -1,31 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-
-
+import DataContext from "../context/DataContext";
 
 import React from "react";
 
-const EditOrder = ({
-  orders,
-  handleEdit,
-  editOrderNo,
-  setEditOrderNo,
-  editDate,
-  setEditDate,
-  editCustomer,
-  setEditCustomer,
-  editTrackingNo,
-  setEditTrackingNo,
-  editStatus,
-  setEditStatus,
-  editConsignee,
-  setEditConsignee,
-}) => {
+const EditOrder = () => {
+  const {
+    orders,
+    handleEdit,
+    editOrderNo,
+    setEditOrderNo,
+    editDate,
+    setEditDate,
+    editCustomer,
+    setEditCustomer,
+    editTrackingNo,
+    setEditTrackingNo,
+    editStatus,
+    setEditStatus,
+    editConsignee,
+    setEditConsignee,
+  } = useContext(DataContext);
   const { id } = useParams();
-  console.log(orders);
+  // console.log(orders);
   const order = orders.find((item) => item.orderNo === id);
   // const navigate = useNavigate();
-  console.log(id);
+  // console.log(id);
   useEffect(() => {
     if (order) {
       setEditOrderNo(order.orderNo);
@@ -102,7 +102,7 @@ const EditOrder = ({
               <button
                 className="btn btnPrimary"
                 onClick={() => handleEdit(order.orderNo)}
-                type="submit"
+                type="button"
               >
                 Submit
               </button>
