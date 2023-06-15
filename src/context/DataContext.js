@@ -23,7 +23,7 @@ export const DataProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const { fetchError, isLoading } = useAxiosFetch(
-    "http://localhost:3500/orders/"
+    "https://my.api.mockaroo.com/shipments.json?key=5e0b62d0"
   );
 
 
