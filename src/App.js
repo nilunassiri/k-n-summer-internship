@@ -13,7 +13,7 @@ import { DataProvider } from "./context/DataContext";
 function App() {
   return (
     <div className="App">
-      <Header title="Kuehne-Nagel Shipment" />
+      <Header title="Kühne + Nagel Shipment" />
       <DataProvider>
         <Nav />
         <Routes>

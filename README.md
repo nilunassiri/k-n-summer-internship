@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Run the Project:
 
 In the project directory, you can run: `npm start`
 
@@ -25,9 +25,9 @@ there is a dataContext in the app to make the app more clean and tidy using crea
 
 for the icons, I used react-icons library and used the Font Awsome package.\
 
-#### Api:
+### Api:
 
-the api that is used is "[https://my.api.mockaroo.com/shipments.json?key=5e0b62d0]" from the task file. \
+the api that is used is [https://my.api.mockaroo.com/shipments.json?key=5e0b62d0](https://my.api.mockaroo.com/shipments.json?key=5e0b62d0) from the task file. \
 
 but I also made a json file as db.json. if the current api reached the limits and doesn't work, you can run a REST api using this command on terminal:
 
@@ -35,20 +35,28 @@ but I also made a json file as db.json. if the current api reached the limits an
 
 then you can replace the current api with this url :
 
-"[http://localhost:3500/orders]"
+[http://localhost:3500/orders](http://localhost:3500/orders)
 
-##### Features:
+### Features:
 
 IN this app, you can see a list of shipment details on Home page, using a table.\
 
+![Alt text](01.png)
+
 In each row there are 3 options, you can choose view button to view the details in seprate page, edit button to edit data of a single item, and delete button to delete an item.\
+
+![Alt text](04.png)
 
 On About page, there are some info about the Author, also you can find some contacts info.\
 
+![Alt text](02.png)
+
 Using the "Add Order +" button, you can add new orders to the list.\
+
+![Alt text](03.png)
 
 There are also 2 buttons on seprate item details page, where you can delete or update the item.\
 
-You can also search items on the Homepage and find the one you are looking for.\
+![Alt text](05.png)
 
-In footer you can see how many items are left in the list.\
+You can also search items on the Homepage and find the one you are looking for.\
